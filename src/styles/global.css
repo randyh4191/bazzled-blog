@@ -20,7 +20,13 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: rgb(var(--bg));
+	background-color: rgb(var(--bg));
+	/* subtle texture without screaming "template" */
+	background-image:
+		radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(0, 0, 0, 0.03), transparent 280px);
+	background-size: 20px 20px, 100% 100%;
+	background-position: 0 0, 0 0;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--text));
@@ -45,19 +51,21 @@ h6 {
 	letter-spacing: -0.01em;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 2.2rem;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 1.55rem;
+	margin-top: 1.5rem;
 }
 h3 {
-	font-size: 1.953em;
+	font-size: 1.2rem;
+	margin-top: 1.25rem;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 1.05rem;
 }
 h5 {
-	font-size: 1.25em;
+	font-size: 0.95rem;
 }
 strong,
 b {
@@ -116,6 +124,12 @@ hr {
 	border-top: 1px solid rgb(var(--border));
 }
 @media (max-width: 720px) {
+	body {
+		font-size: 17px;
+	}
+	h1 {
+		font-size: 1.9rem;
+	}
 	main {
 		padding: 2rem 1rem;
 	}
