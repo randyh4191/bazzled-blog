@@ -1,62 +1,54 @@
-# Astro Starter Kit: Blog
+# bazzled-blog
 
-```sh
-npm create astro@latest -- --template blog
+Static blog for **blog.bazzled.com** (GitHub Pages + Astro).
+
+## Writing / publishing
+
+Posts are Markdown/MDX files in:
+
+- `src/content/posts/`
+
+URLs are:
+
+- `https://blog.bazzled.com/posts/<slug>/`
+
+Create a new post file:
+
+```bash
+npm run new -- "Your Post Title"
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Publish:
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+```bash
+git add -A
+git commit -m "post: your title"
+git push
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Pushing to `main` triggers GitHub Actions → builds → deploys to GitHub Pages.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Dev
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+```bash
+npm install
+npm run dev
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Deploy details
 
-## 🧞 Commands
+- GitHub Actions workflow: `.github/workflows/pages.yml`
+- Output: `dist/`
+- Custom domain: `public/CNAME` contains `blog.bazzled.com`
+- Astro config sets:
+  - `site: https://blog.bazzled.com`
+  - `trailingSlash: 'always'`
 
-All commands are run from the root of the project, from a terminal:
+## DNS (custom domain)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Set **CNAME**:
 
-## 👀 Want to learn more?
+- `blog.bazzled.com` → `randyh4191.github.io`
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Then in GitHub → Repo Settings → Pages, ensure custom domain is `blog.bazzled.com` (already set via API).
+After DNS propagates, enable **Enforce HTTPS**.
